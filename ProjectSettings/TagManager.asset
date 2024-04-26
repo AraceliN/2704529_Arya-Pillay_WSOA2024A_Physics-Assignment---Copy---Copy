@@ -6,6 +6,12 @@ TagManager:
   tags:
   - BluePlayerGoal
   - RedPlayerGoal
+  - RedPlayer
+  - BluePlayer
+  - Puck
+  - Teleporter
+  - Teleporter 1
+  - Teleporter 2
   layers:
   - Default
   - TransparentFX

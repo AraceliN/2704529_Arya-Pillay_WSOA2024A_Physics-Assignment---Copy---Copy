@@ -1,12 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PuckScript : MonoBehaviour
 {
     public ScoreScript ScoreScriptInstance;
     public static bool WasGoal { get; private set; }
+    public static bool puckHitTwice = false;
+    public ScoreScript ScoreScript;
+
+    public static bool WasRegion { get; private set; }
+
+    [SerializeField]
+    private TextMeshProUGUI BluePlayerText;
+    [SerializeField]
+    private TextMeshProUGUI RedPlayerText;
+
+    private int bluePlayerScore, redPlayerScore;
+
     private Rigidbody2D RB;
 
     public float MaximumSpeed;
@@ -36,9 +51,10 @@ public class PuckScript : MonoBehaviour
             }
         }
     }
+
     private IEnumerator ResetPuck()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(0.5f);
         WasGoal = false;
         RB.velocity = RB.position = new Vector2(0, 0);
     }

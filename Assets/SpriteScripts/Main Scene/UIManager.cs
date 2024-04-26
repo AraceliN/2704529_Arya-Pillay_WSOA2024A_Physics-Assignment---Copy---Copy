@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
     [Header("Canvas")]
     public GameObject ReStartCanvas;
     public GameObject GameCanvas;
+    public GameObject TimerCanvas;
+    public GameObject PortalCanvas;
 
     [Header("ReStartCanvas")]
     public GameObject WinText;
@@ -17,6 +19,7 @@ public class UIManager : MonoBehaviour
     public PuckScript puckScript;
     public PlayerRedMovement playerRedMovement;
     public PlayerBlue playerBlue;
+    public TimerScript timerScript;
 
     public void ShowReStartCanvas(bool DidBlueWin)
     {
@@ -41,8 +44,11 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         GameCanvas.SetActive(true);
+        TimerCanvas.SetActive(true);
         ReStartCanvas.SetActive(false);
 
+        timerScript.Start();
+        timerScript.Update();
         scoreScript.ResetScore();
         puckScript.CentrePuck();
         playerRedMovement.ResetPosition();
